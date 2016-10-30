@@ -26,6 +26,10 @@
   ],
   "author": "Jose Garcia",
   "license": "MIT",
+  "peerDependency": {
+    "aws-sdk": "^2.6.7",
+    "rc-upload": "^2.1.0"
+  },
   "dependencies": {
     "babel-runtime": "^6.11.6"
   },
