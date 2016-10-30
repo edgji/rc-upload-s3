@@ -1,6 +1,6 @@
 {
   "name": "rc-upload-s3",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wrapper for rc-upload with support for AWS S3 based uploading",
   "files": [
     "lib"
