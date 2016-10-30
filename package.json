@@ -8,13 +8,29 @@
   "main": "./lib/index",
   "scripts": {
     "compile": "babel -d lib/ src/",
+    "prepublish": "rm -rf lib && npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:edgji/rc-upload-s3.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "react-upload",
+    "rc-upload",
+    "upload",
+    "aws",
+    "s3"
+  ],
+  "author": "Jose Garcia",
+  "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.6.7",
     "babel-runtime": "^6.11.6"
   },
   "devDependencies": {
+    "aws-sdk": "^2.6.7",
     "babel-cli": "^6.16.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
