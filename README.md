@@ -8,7 +8,15 @@ React Upload S3
 ```js
 var Upload = require('rc-upload-s3');
 var React = require('react');
-React.render(<Upload />, container);
+var AWS = require('aws-sdk');
+// use a valid credentials object from aws-sdk
+var credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: '<identityPoolId>',
+  IdentityId: '<IdentityId>',
+  Logins: { 'cognito-identity.amazonaws.com': '<Token>' }
+});
+var s3params = {Metadata: { uploader: 'react-upload-s3' }}; // tag upload files with uploader used
+React.render(<Upload action="bucketName" credentials={credentials} params={s3params} />, container);
 ```
 
 ## API
@@ -35,6 +43,6 @@ React.render(<Upload />, container);
 |     onProgress      |       function        |         | progress callback, only for modern browsers |
 |    beforeUpload     |       function        |  null   | before upload check, return false or a rejected Promise will stop upload, only for modern browsers |
 |    customRequest    |       function        |  null   | provide an override for the default xhr behavior for additional customization |
-|     credentials     |    object/function    |  null   |     should resolve to AWS credential     |
-|       params        |        object         |  null   | params passed to AWS.S3({params: params}) |
+|     credentials     |    object/function    |  null   | should resolve to AWS credential see [aws-sdk docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Credentials.html) |
+|       params        |        object         |  null   | params passed to AWS.S3({params: params}) see [available param options](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property) |
 |   withCredentials   |        boolean        |  false  |       ajax upload with cookie send       |
